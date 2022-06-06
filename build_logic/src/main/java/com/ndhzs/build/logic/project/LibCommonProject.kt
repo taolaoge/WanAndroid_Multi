@@ -28,5 +28,6 @@ class LibCommonProject(project: Project) : BaseLibraryProject(project) {
     dependRoomRxjava()
     dependRoomPaging()
     dependRxPermissions()
+    dependCompose()
   }
 }

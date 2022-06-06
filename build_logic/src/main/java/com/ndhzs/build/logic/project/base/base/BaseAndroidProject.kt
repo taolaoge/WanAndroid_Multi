@@ -1,10 +1,10 @@
 @file:Suppress("UnstableApiUsage")
 
-package com.ndhzs.build.logic.project.base.base
+package project.base.base
 
 import com.android.build.api.dsl.*
-import com.ndhzs.build.logic.depend.dependARouter
-import com.ndhzs.build.logic.depend.dependTestBase
+import lib.dependARouter
+import lib.dependTestBase
 import org.gradle.api.Action
 import org.gradle.api.JavaVersion
 import org.gradle.api.plugins.ExtensionAware
@@ -12,10 +12,10 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.project
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
-import com.ndhzs.build.logic.config.Config
-import com.ndhzs.build.logic.depend.dependAndroidBase
-import gradle.kotlin.dsl.accessors._e98ba513b34f86980a981ef4cafb3d49.publishing
-import org.gradle.api.Project
+import org.jetbrains.kotlin.gradle.plugin.KaptExtension
+import config.Config
+import lib.Compose
+import lib.dependAndroidBase
 
 /**
  * ...
@@ -23,7 +23,7 @@ import org.gradle.api.Project
  * @email 2767465918@qq.com
  * @date 2022/5/28 12:34
  */
-abstract class BaseAndroidProject(project: Project) : BaseProject(project) {
+abstract class BaseAndroidProject : BaseProject() {
   
   override fun initProjectInternal() {
     dependencies {
@@ -41,9 +41,6 @@ abstract class BaseAndroidProject(project: Project) : BaseProject(project) {
     super.initProjectInternal()
   }
   
-  /**
-   * 是否自动依赖自己目录下的子模块
-   */
   open fun isDependChildModule(): Boolean = true
   
   /**
@@ -89,6 +86,11 @@ abstract class BaseAndroidProject(project: Project) : BaseProject(project) {
     
     buildFeatures {
       viewBinding = true
+      compose = true
+    }
+
+    composeOptions {
+      kotlinCompilerExtensionVersion = Compose.compose_version
     }
     
     (this as ExtensionAware).extensions.configure(
@@ -117,11 +119,5 @@ abstract class BaseAndroidProject(project: Project) : BaseProject(project) {
     }.forEach {
       "implementation"(project(":${name}:${it.name}"))
     }
-  }
-  
-  companion object {
-    val ignoreProjectCacheList = listOf<String>(
-    
-    )
   }
 }
