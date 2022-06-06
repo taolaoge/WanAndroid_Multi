@@ -21,9 +21,6 @@ fun Project.dependTestBase() {
     "testImplementation"(Test.junit)
     "androidTestImplementation"(Test.`junit-android`)
     "androidTestImplementation"(Test.`espresso-core`)
-    "androidTestImplementation"(Compose.`ui-test`)
-    "debugImplementation"(Compose.`ui-test-debug`)
-    "debugImplementation"(Compose.`ui-tool-debug`)
   }
 }
 
@@ -48,5 +45,13 @@ fun Project.dependTestPaging() {
 fun Project.dependTestNavigation() {
   dependencies {
     "testImplementation"(Navigation.`navigation-testing`)
+  }
+}
+
+fun Project.dependTestCompose() {
+  dependencies {
+    "androidTestImplementation"(Compose.`ui-test`)
+    "debugImplementation"(Compose.`ui-test-debug`)
+    "debugImplementation"(Compose.`ui-tool-debug`)
   }
 }
