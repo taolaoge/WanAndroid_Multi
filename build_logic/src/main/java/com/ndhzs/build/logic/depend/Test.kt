@@ -1,6 +1,5 @@
 package com.ndhzs.build.logic.depend
 
-import lib.Compose
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 
