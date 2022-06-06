@@ -10,34 +10,19 @@ import com.ndhzs.lib.common.ui.BaseActivity
 
 class MainActivity : BaseActivity() {
   
-  private val mBtnOpenTestActivity: Button by R.id.main_btn_open_test_activity.view()
-  private val mBtnShowFragment: Button by R.id.main_btn_show_test_show_fragment.view()
+
   
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.main_activity_main)
     
-    mBtnOpenTestActivity.setOnClickListener {
-      toast("启动 TestActivity")
-      ServiceManager(ITestService::class)
-        .startTestActivity(
-          this,
-          ITestService.Data(
-            "123", "12345"
-          )
-        )
-    }
+
 
     // 观察 liveData
     ServiceManager(ITestService::class).liveData.observe {
       // ......
     }
 
-    mBtnShowFragment.setOnClickListener {
-      replaceFragment(R.id.main_fcv_show) {
-        toast("启动 TestShowFragment")
-        ServiceManager.fragment(TEST_SHOW)
-      }
-    }
+
   }
 }
