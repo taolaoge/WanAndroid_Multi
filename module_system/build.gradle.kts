@@ -1,16 +1,19 @@
-import com.ndhzs.build.logic.depend.api.dependApiMain
-import com.ndhzs.build.logic.depend.dependAndroidKtx
-import com.ndhzs.build.logic.depend.dependAndroidView
-import com.ndhzs.build.logic.depend.dependLifecycleKtx
+import com.ndhzs.build.logic.depend.*
 
 plugins {
     id("module-manager")
 //  id("module-debug")
 }
 
-dependAndroidView()
+dependCompose()
 dependAndroidKtx()
-
+dependLifecycleKtx()
+dependNetwork()
+dependRxjava()
+dependPaging()
 dependencies {
-// 这里面写该只有自己模块才会用到的依赖
+    implementation("androidx.paging:paging-compose:1.0.0-alpha14")
+    implementation("io.coil-kt:coil-compose:1.4.0")
+    implementation("io.coil-kt:coil:1.4.0")
+    // 这里面写该只有自己模块才会用到的依赖
 }

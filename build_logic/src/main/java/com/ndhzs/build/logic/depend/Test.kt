@@ -47,3 +47,11 @@ fun Project.dependTestNavigation() {
     "testImplementation"(Navigation.`navigation-testing`)
   }
 }
+
+fun Project.dependTestCompose() {
+  dependencies {
+    "androidTestImplementation"(Compose.`ui-test`)
+    "debugImplementation"(Compose.`ui-test-debug`)
+    "debugImplementation"(Compose.`ui-tool-debug`)
+  }
+}
