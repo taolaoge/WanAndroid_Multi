@@ -18,7 +18,6 @@ import com.ndhzs.module.system.ui.theme.WanAndroid_MultiTheme
 
 @Route(path = SYSTEM_ENTRY)
 class SystemActivity : ComponentActivity() {
-    val viewModel by lazy { ViewModelProvider(this).get(HomeArticleViewModel::class.java) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -29,7 +28,7 @@ class SystemActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    HomeArticleList(viewModel)
+
                 }
             }
         }
