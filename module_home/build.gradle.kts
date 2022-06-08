@@ -2,9 +2,8 @@ import com.ndhzs.build.logic.depend.*
 import com.ndhzs.build.logic.depend.api.dependApiMain
 
 plugins {
-    id("module-manager")
-//    id("module-debug")
-    id("org.jetbrains.kotlin.android")
+//    id("module-manager")
+    id("module-debug")
 }
 
 dependAndroidView()

@@ -1,6 +1,6 @@
-package com.ndhzs.module.system.logic.model
+package com.example.module.home.bean
 
-data class DataX(
+data class TopData(
     val apkLink: String,
     val audit: Int,
     val author: String,
@@ -28,7 +28,7 @@ data class DataX(
     val shareUser: String,
     val superChapterId: Int,
     val superChapterName: String,
-    val tags: List<Tag>,
+    val tags: List<Any>,
     val title: String,
     val type: Int,
     val userId: Int,

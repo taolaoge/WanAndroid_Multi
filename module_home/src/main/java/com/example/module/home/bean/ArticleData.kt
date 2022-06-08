@@ -1,8 +1,8 @@
-package com.ndhzs.module.system.logic.model
+package com.example.module.home.bean
 
-data class Data(
+data class ArticleData(
     val curPage: Int,
-    val datas: List<DataX>,
+    val datas: List<DataXX>,
     val offset: Int,
     val over: Boolean,
     val pageCount: Int,

@@ -1,6 +1,6 @@
 package com.example.module.home.bean
 
-data class Data(
+data class FriendData(
     val category: String,
     val icon: String,
     val id: Int,

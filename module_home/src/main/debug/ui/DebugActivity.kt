@@ -7,6 +7,6 @@ import com.example.module.home.R
 class DebugActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_debug2)
+        setContentView(R.layout.home_activity_debug)
     }
 }

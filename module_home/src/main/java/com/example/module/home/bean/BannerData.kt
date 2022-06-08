@@ -1,6 +1,6 @@
 package com.example.module.home.bean
 
-data class DataX(
+data class BannerData(
     val desc: String,
     val id: Int,
     val imagePath: String,

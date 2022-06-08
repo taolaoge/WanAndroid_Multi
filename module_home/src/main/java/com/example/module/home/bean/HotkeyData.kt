@@ -1,6 +1,6 @@
 package com.example.module.home.bean
 
-data class DataXXXX(
+data class HotkeyData(
     val id: Int,
     val link: String,
     val name: String,

@@ -7,33 +7,19 @@
 
 
     <TextView
-        android:id="@+id/tv_top_tag_top"
+        android:id="@+id/tv_normal_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="5dp"
-        android:text="置顶"
-        android:textColor="@color/red"
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.014"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049" />
-
-    <TextView
-        android:id="@+id/tv_top_tag_author"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_top_tag_tag"
-        app:layout_constraintStart_toEndOf="@+id/tv_top_tag_tag"
-        app:layout_constraintTop_toTopOf="@+id/tv_top_tag_tag"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/tv_top_tag_time"
+        android:id="@+id/tv_normal_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -44,7 +30,7 @@
         app:layout_constraintVertical_bias="0.111" />
 
     <TextView
-        android:id="@+id/tv_top_tag_title"
+        android:id="@+id/tv_normal_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -56,7 +42,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_top_tag_chapterName"
+        android:id="@+id/tv_normal_chapterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -64,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.033"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_top_tag_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_normal_title"
         app:layout_constraintVertical_bias="0.684" />
 
     <TextView
@@ -72,12 +58,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" / "
-        app:layout_constraintBottom_toBottomOf="@+id/tv_top_tag_chapterName"
-        app:layout_constraintStart_toEndOf="@+id/tv_top_tag_chapterName"
-        app:layout_constraintTop_toTopOf="@+id/tv_top_tag_chapterName" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_normal_chapterName"
+        app:layout_constraintStart_toEndOf="@+id/tv_normal_chapterName"
+        app:layout_constraintTop_toTopOf="@+id/tv_normal_chapterName" />
 
     <TextView
-        android:id="@+id/tv_top_tag_superChapterName"
+        android:id="@+id/tv_normal_superChapterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -85,15 +71,5 @@
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="@+id/textView7" />
 
-    <TextView
-        android:id="@+id/tv_top_tag_tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="本站发布"
-        android:textColor="@color/teal_200"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_top_tag_top"
-        app:layout_constraintStart_toEndOf="@+id/tv_top_tag_top"
-        app:layout_constraintTop_toTopOf="@+id/tv_top_tag_top"
-        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
