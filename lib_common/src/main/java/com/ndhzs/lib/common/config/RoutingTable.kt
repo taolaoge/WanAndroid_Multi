@@ -21,3 +21,5 @@ const val ACCOUNT_SERVICE = "/account/service"
 
 // system 模块
 const val SYSTEM_ENTRY = "/system/entry"
+
+const val MAIN_SERVICE = "/main/entry"

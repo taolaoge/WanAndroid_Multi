@@ -1,4 +1,4 @@
-package lib
+package com.ndhzs.build.logic.depend
 
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
@@ -22,8 +22,6 @@ object Compose {
     const val `ui-test` = "androidx.compose.ui:ui-test-junit4:$compose_version"
     const val `ui-tool-debug` = "androidx.compose.ui:ui-tooling:$compose_version"
     const val `ui-test-debug` = "androidx.compose.ui:ui-test-manifest:$compose_version"
-
-
 }
 
 fun Project.dependCompose() {

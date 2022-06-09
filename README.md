@@ -52,6 +52,4 @@ test taolao
 pppp
 test merge
 
-test pr
 
-test pr
