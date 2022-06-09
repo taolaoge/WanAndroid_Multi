@@ -1,4 +1,4 @@
-package com.ndhzs.module.main.viewmodel
+package com.ndhzs.module.main.ui.viewmodel
 
 import com.ndhzs.lib.common.ui.BaseViewModel
 

@@ -15,7 +15,6 @@ class MainServiceImpl:IMainService {
     override val dataFlow: MutableSharedFlow<IMainService.Data>
         get() = _dataFlow
 
-
     override fun init(context: Context?) {
 
     }

@@ -42,7 +42,7 @@
         app:itemTextColor="@drawable/main_bnv_checked_color"
         app:labelVisibilityMode="labeled"
         android:background="@color/white"
-        android:id="@+id/bottomNavigationView"
+        android:id="@+id/main_activity_bottom_navigation_view"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize" />
 
