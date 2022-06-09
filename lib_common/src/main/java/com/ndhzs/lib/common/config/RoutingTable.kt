@@ -10,7 +10,7 @@ package com.ndhzs.lib.common.config
 
 // 测试模块
 const val TEST_ENTRY = "/test/entry"
-const val TEST_SHOW = "/test/show/entry"
+const val TEST_SHOW = "/test/show"
 const val TEST_SERVICE = "/test/service"
 
 // login 模块

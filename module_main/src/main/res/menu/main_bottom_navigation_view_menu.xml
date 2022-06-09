@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:id="@+id/main_bnv_home_page"
+            android:icon="@drawable/main_home_page_iv_normal"
+            android:title="@string/bnv_home"/>
+        <item android:id="@+id/main_bnv_square_page"
+            android:icon="@drawable/main_square_page_iv_normal"
+            android:title="@string/bnv_square"/>
+        <item android:id="@+id/main_bnv_wechat_page"
+            android:icon="@drawable/main_wechat_page_iv_normal"
+            android:title="@string/bnv_wechat"/>
+        <item android:id="@+id/main_bnv_system_page"
+            android:icon="@drawable/main_system_page_iv_normal"
+            android:title="@string/bnv_system"/>
+        <item android:id="@+id/main_bnv_project_page"
+            android:icon="@drawable/main_project_page_iv_normal"
+            android:title="@string/bnv_project"/>
+    </group>
+</menu>
