@@ -65,19 +65,19 @@ class HomeArticleFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         //观察page,初始化page，page = 0时，就会调用一次
         viewModel.page.observe(this) {
-            /**
-             * 传入一个高阶函数，当请求成功后回调，取消swipeLayout的刷新动画
-             * 可以加一个判空吗，isRefreshing
-             */
-            viewModel.getNormalArticleData(){
-                mSwipeLayout.isRefreshing = false
-            }
             //如果page==0的话，此时的banner以及topArticle的数据还没有请求，需要请求
             if (it == 0){
                 loadBannerData()
-                loadTopData()
                 //增加监听，下拉刷新的监听
                 initSwipeLayout()
+            }else{
+                /**
+                 * 传入一个高阶函数，当请求成功后回调，取消swipeLayout的刷新动画
+                 * 可以加一个判空吗，isRefreshing
+                 */
+                viewModel.getNormalArticleData(){
+                    mSwipeLayout.isRefreshing = false
+                }
             }
         }
 
@@ -92,12 +92,15 @@ class HomeArticleFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    private fun loadTopData() {
-        viewModel.getTop()
-    }
 
     private fun loadBannerData() {
-        viewModel.getBanner()
+        viewModel.getBanner(){
+            viewModel.getTop(){
+                viewModel.getNormalArticleData {
+                    mSwipeLayout.isRefreshing = false
+                }
+            }
+        }
     }
 
     private fun freshRecycleView() {

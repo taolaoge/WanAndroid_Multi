@@ -37,7 +37,7 @@ class HomeArticleViewModel : BaseViewModel() {
     val normalArticleData = ArrayList<DataXX>()
 
 
-    fun getBanner() {
+    fun getBanner(block: () -> Unit) {
         HomeArticleService.INSTANCE.getBanner()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -47,6 +47,7 @@ class HomeArticleViewModel : BaseViewModel() {
             }
             .mapOrThrowApiException()
             .safeSubscribeBy {
+                block()
                 //处理数据
                 dealBannerData(it)
             }
@@ -59,7 +60,7 @@ class HomeArticleViewModel : BaseViewModel() {
         }
     }
 
-    fun getTop() {
+    fun getTop(block: () -> Unit) {
         HomeArticleService.INSTANCE.getTop()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -68,6 +69,7 @@ class HomeArticleViewModel : BaseViewModel() {
             }
             .mapOrThrowApiException()
             .safeSubscribeBy {
+                block()
                 //处理数据
                 dealTopData(it)
             }
