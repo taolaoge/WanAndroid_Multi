@@ -1,6 +1,7 @@
 package com.example.module.home.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.module.home.R
 import com.example.module.home.ui.adapter.ArticleRvAdapter
 import com.example.module.home.viewModel.HomeArticleViewModel
@@ -37,7 +39,18 @@ class HomeArticleFragment : BaseFragment() {
                     )
                 )
             }
+            freshRecycleView()
         }
+
+    private val mSwipeLayout: SwipeRefreshLayout by R.id.swipe_layout_rv.view<SwipeRefreshLayout>()
+
+    private fun initSwipeLayout(){
+        mSwipeLayout.setOnRefreshListener {
+            //先清除先前List的数据，然后将page的值变为0，此时就会回调监听page的代码
+            viewModel.clearList()
+            viewModel.clearPage()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,22 +65,31 @@ class HomeArticleFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         //观察page,初始化page，page = 0时，就会调用一次
         viewModel.page.observe(this) {
-            viewModel.getNormalArticleData()
+            /**
+             * 传入一个高阶函数，当请求成功后回调，取消swipeLayout的刷新动画
+             * 可以加一个判空吗，isRefreshing
+             */
+            viewModel.getNormalArticleData(){
+                mSwipeLayout.isRefreshing = false
+            }
+            //如果page==0的话，此时的banner以及topArticle的数据还没有请求，需要请求
+            if (it == 0){
+                loadBannerData()
+                loadTopData()
+                //增加监听，下拉刷新的监听
+                initSwipeLayout()
+            }
         }
 
         viewModel.isLoading.observe(this){
+            //数据加载完成后，刷新rv的adapter
             if (!it) freshRecycleViewData()
         }
 
-        viewModel.isSlide.observe(this){
-            if (it) freshRecycleView()
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadBannerData()
-        loadTopData()
     }
 
     private fun loadTopData() {

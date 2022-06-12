@@ -3,7 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android's project/WanAndroid_Multi/lib_common/src/main/res/drawable/ic_launcher_background.xml" value="0.1425" />
+        <entry key="..\:/Android's project/WanAndroid_Multi/lib_common/src/main/res/drawable/main_bnv_checked_color.xml" value="0.1425" />
+        <entry key="..\:/Android's project/WanAndroid_Multi/lib_common/src/main/res/drawable/main_cd_shap.xml" value="0.1425" />
+        <entry key="..\:/Android's project/WanAndroid_Multi/lib_common/src/main/res/drawable/main_float_action_buttom_color.xml" value="0.1425" />
+        <entry key="..\:/Android's project/WanAndroid_Multi/lib_common/src/main/res/drawable/main_logout_iv_normal.xml" value="0.1425" />
+        <entry key="..\:/Android's project/WanAndroid_Multi/lib_common/src/main/res/drawable/n_color.xml" value="0.1425" />
+        <entry key="..\:/Android's project/WanAndroid_Multi/lib_common/src/main/res/drawable/state.xml" value="0.1425" />
+        <entry key="..\:/Android's project/WanAndroid_Multi/lib_common/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1425" />
         <entry key="..\:/Android's project/WanAndroid_Multi/module_main/src/main/res/layout/main_activity_main.xml" value="0.21120136810602821" />
+        <entry key="..\:/Android's project/WanAndroid_Multi/module_main/src/main/res/layout/main_nav_header_layout.xml" value="0.21120136810602821" />
+        <entry key="..\:/Android's project/WanAndroid_Multi/module_main/src/main/res/menu/main_bottom_navigation_view_menu.xml" value="0.21120136810602821" />
+        <entry key="..\:/Android's project/WanAndroid_Multi/module_main/src/main/res/menu/main_nv_menu.xml" value="0.21120136810602821" />
+        <entry key="..\:/Android's project/WanAndroid_Multi/module_test/src/main/res/layout/rv_item.xml" value="0.21120136810602821" />
+        <entry key="..\:/Android's project/WanAndroid_Multi/module_test/src/main/res/layout/test_activity_test.xml" value="0.21120136810602821" />
+        <entry key="..\:/Android's project/WanAndroid_Multi/module_test/src/main/res/layout/test_fragment_show.xml" value="0.21120136810602821" />
         <entry key="..\:/Android_Studio/Project/Other/WanAndroid_Multi/lib_common/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.216" />
         <entry key="..\:/Android_Studio/Project/Other/WanAndroid_Multi/lib_common/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.216" />
         <entry key="..\:/Android_Studio/Project/Other/WanAndroid_Multi/lib_common/src/main/res/drawable/ic_launcher_background.xml" value="0.2065" />
@@ -14,7 +28,16 @@
         <entry key="..\:/Android_Studio/Project/Other/WanAndroid_Multi/module_main/src/main/res/layout/main_activity_main.xml" value="0.18135764944275581" />
         <entry key="..\:/Android_Studio/Project/Other/WanAndroid_Multi/module_test/src/main/res/layout/test_activity_test.xml" value="0.3129528985507246" />
         <entry key="..\:/Android_Studio/Project/Other/WanAndroid_Multi/module_test/src/main/res/layout/test_fragment_show.xml" value="0.3129528985507246" />
-        <entry key="..\:/Users/bangbangp/AndroidStudioProjects/WanAndroid_Multi/module_login/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Users/bangbangp/AndroidStudioProjects/WanAndroid_Multi/module_home/src/main/res/layout/home_fragment_home_article.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/bangbangp/AndroidStudioProjects/WanAndroid_Multi/module_home/src/main/res/layout/home_recycle_item_new.xml" value="0.264" />
+        <entry key="..\:/Users/bangbangp/AndroidStudioProjects/WanAndroid_Multi/module_home/src/main/res/layout/home_recycle_item_new_tag.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/bangbangp/AndroidStudioProjects/WanAndroid_Multi/module_home/src/main/res/layout/home_recycle_item_normal.xml" value="0.4" />
+        <entry key="..\:/Users/bangbangp/AndroidStudioProjects/WanAndroid_Multi/module_home/src/main/res/layout/home_recycle_item_normal_project.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/bangbangp/AndroidStudioProjects/WanAndroid_Multi/module_home/src/main/res/layout/home_recycle_item_normal_tag.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/bangbangp/AndroidStudioProjects/WanAndroid_Multi/module_home/src/main/res/layout/home_recycle_item_top.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/bangbangp/AndroidStudioProjects/WanAndroid_Multi/module_home/src/main/res/layout/home_recycle_item_top_new.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/bangbangp/AndroidStudioProjects/WanAndroid_Multi/module_home/src/main/res/layout/home_recycle_item_top_new_tag.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/bangbangp/AndroidStudioProjects/WanAndroid_Multi/module_home/src/main/res/layout/home_recycle_item_top_tag.xml" value="0.4036458333333333" />
       </map>
     </option>
   </component>
@@ -23,12 +46,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="SuppressABINotification">
-    <option name="modulesWithSuppressedNotConfigured">
-      <set>
-        <option value="WanAndroid_Multi.module_test.api_test" />
-      </set>
-    </option>
   </component>
 </project>

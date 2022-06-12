@@ -23,8 +23,6 @@ import io.reactivex.rxjava3.schedulers.Schedulers
  * date : 2022/6/6
  */
 class HomeArticleViewModel : BaseViewModel() {
-    //是否rv可以滑动，就是判断是否已经请求到了数据，如果没请求到数据，会造成空指针
-    val isSlide = MutableLiveData(false)
     //保持单向更新
     private val _page = MutableLiveData(0)
     val page: LiveData<Int>
@@ -85,7 +83,8 @@ class HomeArticleViewModel : BaseViewModel() {
         _page.value = _page.value!!.plus(1)
     }
 
-    fun getNormalArticleData(){
+    fun getNormalArticleData(block:()->Unit){
+        _isLoading.value = true
         HomeArticleService.INSTANCE.getHomeArticle(page.value!!)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -96,8 +95,8 @@ class HomeArticleViewModel : BaseViewModel() {
             .safeSubscribeBy {
                 dealNormalArticleData(it)
                 _isLoading.value = false
-                //请求到了数据后，此时的rv可以滑动
-                isSlide.value = true
+                //请求到了数据后，此时的转圈进度条就可以关闭，回调函数调用处的高阶函数
+                block()
             }
     }
 
@@ -105,5 +104,15 @@ class HomeArticleViewModel : BaseViewModel() {
            for (i in data.datas){
                normalArticleData.add(i)
            }
+    }
+
+    fun clearPage(){
+        _page.value = 0
+    }
+
+    fun clearList(){
+        bannerData.clear()
+        normalArticleData.clear()
+        topData.clear()
     }
 }

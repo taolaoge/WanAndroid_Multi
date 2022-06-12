@@ -170,12 +170,15 @@ class ArticleRvAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         var article: DataXX
         var top: TopData
+        /**
+         * 判断是否为置顶的文章
+         */
         if (position < topSize + 1 && position >= 0) {
             if (position != 0) {
                 top = topArticleData[position - 1]
                 if (holder is TopNewHolder){
                     holder.run {
-                        mTvAuthor.text = top.author
+                        if (top.author == "") mTvAuthor.text = top.shareUser else mTvAuthor.text = top.author
                         mTvChapterName.text = top.chapterName
                         mTvTime.text = top.niceDate
                         mTvTitle.text = top.title
@@ -184,7 +187,7 @@ class ArticleRvAdapter(
                 }
                 if (holder is TopTagHolder) {
                     holder.run {
-                        mTvAuthor.text = top.author
+                        if (top.author == "") mTvAuthor.text = top.shareUser else mTvAuthor.text = top.author
                         mTvChapterName.text = top.chapterName
                         mTvTime.text = top.niceDate
                         mTvTitle.text = top.title
@@ -193,10 +196,14 @@ class ArticleRvAdapter(
                 }
             }
         } else {
+            /**
+             * 首先判断是否为新的文章
+             * 新的文章按新的文章来处理
+             */
             article = normalArticleData[position - 1 - topSize]
             if (holder is NewHolder) {
                 holder.run {
-                    mTvAuthor.text = article.author
+                    if (article.author == "") mTvAuthor.text = article.shareUser else mTvAuthor.text = article.author
                     mTvChapterName.text = article.chapterName
                     mTvTime.text = article.niceDate
                     mTvTitle.text = article.title
@@ -206,7 +213,7 @@ class ArticleRvAdapter(
             if (holder is NewTagHolder){
                 holder.run {
                     mTvTag.text = article.tags[0].name
-                    mTvAuthor.text = article.author
+                    if (article.author == "") mTvAuthor.text = article.shareUser else mTvAuthor.text = article.author
                     mTvChapterName.text = article.chapterName
                     mTvTime.text = article.niceDate
                     mTvTitle.text = article.title
@@ -215,7 +222,7 @@ class ArticleRvAdapter(
             }
             if (holder is NormalTagHolder){
                 holder.run {
-                    mTvAuthor.text = article.author
+                    if (article.author == "") mTvAuthor.text = article.shareUser else mTvAuthor.text = article.author
                     mTvChapterName.text = article.chapterName
                     mTvTime.text = article.niceDate
                     mTvTitle.text = article.title
@@ -224,7 +231,7 @@ class ArticleRvAdapter(
             }
             if (holder is NormalHolder){
                 holder.run {
-                    mTvAuthor.text = article.author
+                    if (article.author == "") mTvAuthor.text = article.shareUser else mTvAuthor.text = article.author
                     mTvChapterName.text = article.chapterName
                     mTvTime.text = article.niceDate
                     mTvTitle.text = article.title
@@ -232,10 +239,6 @@ class ArticleRvAdapter(
                 }
             }
         }
-    }
-
-    fun bindViewHolder(holder: RecyclerView.ViewHolder) {
-
     }
 
     override fun getItemCount(): Int = topArticleData.size + normalArticleData.size +1

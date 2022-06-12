@@ -11,10 +11,13 @@ dependAndroidKtx()
 dependGlide()
 dependRxjava()
 dependNetwork()
+dependCoroutines()
 
 dependencies {
 implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
     // 这里面写该只有自己模块才会用到的依赖
 }
