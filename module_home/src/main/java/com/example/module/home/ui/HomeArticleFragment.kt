@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.module.home.R
 import com.example.module.home.ui.adapter.ArticleRvAdapter
 import com.example.module.home.viewModel.HomeArticleViewModel
+import com.ndhzs.lib.common.extensions.toast
 import com.ndhzs.lib.common.ui.BaseFragment
 
 /**
@@ -29,7 +31,9 @@ class HomeArticleFragment : BaseFragment() {
             //可能需要添加线性布局或者是adapter中的list
             val layoutManager = LinearLayoutManager(context)
             val adapter =
-                ArticleRvAdapter(viewModel.bannerData, viewModel.normalArticleData, viewModel.topData)
+                ArticleRvAdapter(viewModel.bannerData, viewModel.normalArticleData, viewModel.topData){
+                    //点击事件的逻辑
+                }
             mRvArticle.run {
                 this.layoutManager = layoutManager
                 this.adapter = adapter

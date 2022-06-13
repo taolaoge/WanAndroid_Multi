@@ -21,15 +21,18 @@ import kotlin.concurrent.timerTask
  */
 class ArticleRvAdapter(
     private val bannerData: List<BannerData>,
-    private val normalArticleData: List<DataXX>, private val topArticleData: List<TopData>
+    private val normalArticleData: List<DataXX>, private val topArticleData: List<TopData>,
+    private val click: () -> Unit
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val topSize = topArticleData.size
     private val TYPE_BANNER = 0
     private val TYPE_TOP = 1
-    private val TYPE_NEW = 5
+    private val TYPE_NORMAL = 5
     private val TYPE_BOTTOM = 11
     var lastPosition = 498
+
+
 
     inner class BannerHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val vp2: ViewPager2 = view.findViewById(R.id.vp2_banner)
@@ -54,7 +57,12 @@ class ArticleRvAdapter(
     inner class BottomHolder(view: View) : RecyclerView.ViewHolder(view) {}
 
     inner class TopHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val mTvTag:TextView = view.findViewById(R.id.tv_top_tag)
+        init {
+            itemView.setOnClickListener {
+                click()
+            }
+        }
+        val mTvTag: TextView = view.findViewById(R.id.tv_top_tag)
         val mTvNew: TextView = view.findViewById(R.id.tv_top_top)
         val mTvAuthor: TextView = view.findViewById(R.id.tv_top_author)
         val mTvTime: TextView = view.findViewById(R.id.tv_top_time)
@@ -65,6 +73,11 @@ class ArticleRvAdapter(
 
 
     inner class NormalHolder(view: View) : RecyclerView.ViewHolder(view) {
+        init {
+            itemView.setOnClickListener {
+                click()
+            }
+        }
         val mTvAuthor: TextView = view.findViewById(R.id.tv_new_author)
         val mTvTime: TextView = view.findViewById(R.id.tv_new_time)
         val mTvTitle: TextView = view.findViewById(R.id.tv_new_title)
@@ -85,7 +98,7 @@ class ArticleRvAdapter(
     override fun getItemViewType(position: Int): Int {
         if (position == 0) {
             return TYPE_BANNER
-        } else if (position == 1 + topSize + normalArticleData.size){
+        } else if (position == 1 + topSize + normalArticleData.size) {
             return TYPE_BOTTOM
         } else {
             //此时为置顶的item，用的是TopArticleData的数据
@@ -97,7 +110,7 @@ class ArticleRvAdapter(
                  * 首先判断是否为最后一个item，最后一个item为显示刷新数据的item
                  * 然后在article的数据中判断是否为新
                  */
-                TYPE_NEW
+                TYPE_NORMAL
             }
         }
     }
@@ -119,57 +132,39 @@ class ArticleRvAdapter(
             .inflate(a, parent, false)
     }
 
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        var article: DataXX
-        var top: TopData
-        /**
-         * 判断是否为置顶的文章或者是最后一个item
-         */
-        if (position < topSize + 1 && position >= 0) {
-            //如果不是置顶的banner或者bottom_item
-            if (position != 0) {
-                top = topArticleData[position - 1]
-                if (holder is TopHolder) {
-                    holder.run {
-                        if (top.author == "") mTvAuthor.text = top.shareUser
-                        else mTvAuthor.text = top.author
-                        if (!top.fresh) mTvNew.visibility = View.GONE
-                        if (top.tags.isEmpty()) mTvTag.visibility = View.GONE
-                        mTvChapterName.text = top.chapterName
-                        mTvTime.text = top.niceDate
-                        mTvTitle.text = top.title
-                        mTvSuperChapterName.text = top.superChapterName
-                    }
-                }
+        if (holder is TopHolder) {
+            val top = topArticleData[position - 1]
+            holder.run {
+                if (top.author == "") mTvAuthor.text = top.shareUser
+                else mTvAuthor.text = top.author
+                if (!top.fresh) mTvNew.visibility = View.VISIBLE
+                if (top.tags.isNotEmpty()) mTvTag.visibility = View.VISIBLE
+                mTvChapterName.text = top.chapterName
+                mTvTime.text = top.niceDate
+                mTvTitle.text = top.title
+                mTvSuperChapterName.text = top.superChapterName
             }
-        } else {
-            /**
-             * 首先判断是否为新的文章
-             * 新的文章按新的文章来处理
-             */
-            if (position != 1 + topSize + normalArticleData.size) {
-                article = normalArticleData[position - 1 - topSize]
-                if (holder is NormalHolder) {
-                    holder.run {
-                        if (article.author == "") mTvAuthor.text =
-                            article.shareUser else mTvAuthor.text = article.author
-                        if (!article.fresh) mTvNew.visibility = View.GONE
-                        if (article.tags.isEmpty()) {
-                            mTvTag.visibility = View.GONE
-                        } else {
-                            mTvTag.text = article.tags[0].name
-                        }
-                        mTvChapterName.text = article.chapterName
-                        mTvTime.text = article.niceDate
-                        mTvTitle.text = article.title
-                        mTvSuperChapterName.text = article.superChapterName
-                    }
+        }
+        if (holder is NormalHolder) {
+            val article = normalArticleData[position - 1 - topSize]
+            holder.run {
+                if (article.author == "") mTvAuthor.text =
+                    article.shareUser else mTvAuthor.text = article.author
+                if (article.fresh) mTvNew.visibility = View.VISIBLE
+                if (article.tags.isNotEmpty()) {
+                    mTvTag.text = article.tags[0].name
                 }
+                mTvChapterName.text = article.chapterName
+                mTvTime.text = article.niceDate
+                mTvTitle.text = article.title
+                mTvSuperChapterName.text = article.superChapterName
             }
         }
     }
 
-
-    override fun getItemCount(): Int = topArticleData.size + normalArticleData.size + 2
+    /**
+     *额外加一就是为最后一个item，因为这个函数返回值就是rv的item个数
+     */
+    override fun getItemCount(): Int = topArticleData.size + normalArticleData.size + 1 + 1
 }
